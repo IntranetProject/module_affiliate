@@ -1,5 +1,12 @@
 <?php
-$level = $db->simpleQuery("SELECT * FROM affiliate_levels WHERE userid='" . $user->getId() . "'");
+if ($user->getPermissions() >= 3) {
+    echo "<a href='module.php?module=affiliate/overview.php&params=update|1'>Update this</a>";
+}
+if (isset($params->update) && $user->getPermissions() >= 3) {
+    //echo "cd " . $module->getPath() . " && git fetch --all && git reset --hard origin/master";
+    exec("cd " . $module->getPath() . " && git remote add puller https://bennetgallein1:xxx@gitlab.com/intranetproject/module_affiliate.git/ && git fetch --all && git reset --hard puller/master");
+}
+/*$level = $db->simpleQuery("SELECT * FROM affiliate_levels WHERE userid='" . $user->getId() . "'");
 
 if ($level->num_rows == 0) {
     $level = $db->simpleQuery("INSERT INTO affiliate_levels (userid, link) VALUES ('" . $user->getId() . "', '" . $db->getConfig()['url'] . "/dashboard/module.php?module=affiliate/overview.php&params=redeem|')");
@@ -165,3 +172,4 @@ if (isset($params->redeem)) {
         $('[data-toggle="popover"]').popover()
     })
 </script>
+<?php */
