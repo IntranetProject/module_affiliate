@@ -1,5 +1,6 @@
 {
   "name": "Affiliate System",
+  "active": true,
   "version": "0.1",
   "priority": "990",
   "baseperm": "1",
